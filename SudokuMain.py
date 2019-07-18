@@ -9,11 +9,10 @@ import SudokuSolver
 #test = NumbersOCR.NumbersOCR()
 #test.train_ocr()
 
-path_img = 'bin/431.jpg'
-path_img = 'bin/2003.png'
+path_img = 'bin/Examples/2005.png'
+#path_img= 'bin/sudo.jpg'
 
 matrixTool = SudokuMatrix.SudokuMatrix()
 grid_imcomplete = matrixTool.ImagetoGrid(path_img)
 solverTool = SudokuSolver.SudokuSolver(grid_imcomplete)
 solverTool.runSolver()
-

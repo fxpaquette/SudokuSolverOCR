@@ -25,6 +25,7 @@ class SudokuMatrix:
         #img = np.array(Image.open(image_path).convert('L').resize((width,height)))
         #plt.imshow(Image.open(image_path).convert('L'))
         output_matrix = np.zeros((9,9),dtype=np.int)
+        print("Grille: ")
         for i in range(0,9):
             ma_string = ""
             for j in range(0,9):

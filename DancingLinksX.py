@@ -149,8 +149,8 @@ class DancingLinks:
     
     def runDLX(self):
         self.search(0)
-        if self.solutions>0:
-            print(self.getSolutionDefault())
+        #if self.solutions>0:
+            #print(self.getSolutionDefault())
         return self.getSolutionDefault()
     
     def getSolutionDefault(self):
@@ -170,7 +170,7 @@ class DancingLinks:
             #rows.append(row_temp)
             rows.append(node.row)
             solution.append(temp[:])
-        print("Rows: ",rows)
+        #print("Rows: ",rows)
         return rows
     
     def printMatrix(self):

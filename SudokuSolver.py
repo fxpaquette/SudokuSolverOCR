@@ -71,11 +71,12 @@ class SudokuSolver:
     
     def runSolver(self):
         self.generateMatrix()
-        print(self.matrice)
+        #print(self.matrice)
         solver = DLX.DancingLinks(self.matrice)
         rows_solution = solver.runDLX()
         sol = self.convertSolutionRows(rows_solution)
-        print(sol)
+        #print(sol)
+        self.printSol(sol)
     
     def getBox(self,row,col):
         return (math.floor(row/3)*3)+math.floor(col/3)
@@ -88,6 +89,15 @@ class SudokuSolver:
             num = (row_sol%81)%9 + 1
             output_matrix[row,col] = num
         return output_matrix
+    def printSol(self,mat):
+        print("")
+        print("Solution:")
+        for i in range(0,9):
+            #print("______________________________________")
+            string = ""
+            for j in range(0,9):
+                string += " " + str(mat[i,j])
+            print(string)
 
 
 
