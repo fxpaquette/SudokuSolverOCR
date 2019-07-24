@@ -1,13 +1,3 @@
-"""
-Vous allez definir une classe pour chaque algorithme que vous allez dvelopper,
-votre classe doit contenit au moins les 3 methodes definies ici bas, 
-    * train     : pour entrainer le modle sur l'ensemble d'entrainement
-    * predict     : pour prdire la classe d'un exemple donn
-    * test         : pour tester sur l'ensemble de test
-vous pouvez rajouter d'autres mthodes qui peuvent vous etre utiles, mais moi
-je vais avoir besoin de tester les mthodes train, predict et test de votre code.
-"""
-
 import numpy as np
 import math
 import os
@@ -19,19 +9,11 @@ import os
 class NeuralNet: #nom de la class à changer
 
     def __init__(self,nb_couches,nb_neurones, **kwargs):
-        """
-        c'est un Initializer. 
-        Vous pouvez passer d'autre paramtres au besoin,
-        c'est vous d'utiliser vos propres notations
-        """
         self.nb_couches = nb_couches
         self.nb_neurones = nb_neurones
         
         
     def train(self, train, train_labels,nb_classes,learning_rate,nb_epoch):
-        """
-        
-        """
         self.train = train
         self.train_labels = train_labels
         self.train_size = len(train)
@@ -161,14 +143,6 @@ class NeuralNet: #nom de la class à changer
 
 
     def predict(self, exemple, label):
-        """
-        Prdire la classe d'un exemple donn en entre
-        exemple est de taille 1xm
-        
-        si la valeur retourn est la meme que la veleur dans label
-        alors l'exemple est bien classifi, si non c'est une missclassification
-
-        """
         noeuds_precedent = exemple.tolist()
         for i in range(0,self.nb_couches - 2):
             noeuds_nouveau = []
