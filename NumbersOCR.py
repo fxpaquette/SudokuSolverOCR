@@ -15,6 +15,7 @@ class NumbersOCR:
         self.nn = NeuralNet.NeuralNet(3,800) #3,800
     def train_ocr(self):
         train = []
+        threshold = 127
         #for number in glob.glob("data/28x28/*"):
         #    for infile in glob.glob(number+'/*'):
         #        file, ext = os.path.splitext(infile)
@@ -25,13 +26,25 @@ class NumbersOCR:
             for infile in glob.glob(number+'/*'):
                 file, ext = os.path.splitext(infile)
                 im = Image.open(infile).convert('L') #convertir en noir et blanc
-                temp = [int(number[-1])] + (np.array(im).flatten()/255).tolist()
+                #Convertir en image binaire
+                list_binary = np.array(im).flatten().tolist()
+                for i in range(0,len(list_binary)):
+                    if list_binary[i] > threshold:
+                        list_binary[i] = 1
+                    else:
+                        list_binary[i] = 0
+                temp = [int(number[-1])] + list_binary
                 train.append(temp)
-        train = np.array(train)
-        np.random.shuffle(train)
-        train_labels = train[:,0].astype(int)
-        train = train[:,1:]
-        self.nn.train(train,train_labels,10,0.075,10)
+                if(len(list_binary)>784):print("Stop ",infile)
+                #print(temp)
+        #print(train)
+        train_mat = np.array(train)
+        #print(train_mat)
+        #print("Shape", train_mat.shape)
+        np.random.shuffle(train_mat)
+        train_labels = train_mat[:,0].astype(int)
+        train_mat = train_mat[:,1:]
+        self.nn.train(train_mat,train_labels,10,0.075,10)
     
     def decodeNN(self):
         self.nn.decode()
@@ -46,7 +59,13 @@ class NumbersOCR:
         #    print(self.nn.predict(im_array,int(file[-1])))
 
     def analyse(self,matrice_image):
-        im_array = matrice_image.flatten()/255
+        threshold = 127
+        im_array = matrice_image.flatten()
+        for i in range(0,784):
+                    if im_array[i] > threshold:
+                        im_array[i] = 1
+                    else:
+                        im_array[i] = 0
         #for i in range(len(im_array)):
         #    if im_array[i]>0.05:
         #        im_array[i] = 1 #max(5*im_array[i],1)

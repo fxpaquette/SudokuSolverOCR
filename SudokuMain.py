@@ -9,7 +9,7 @@ import SudokuSolver
 #test = NumbersOCR.NumbersOCR()
 #test.train_ocr()
 
-path_img = 'bin/Examples/2005.png'
+path_img = 'bin/Examples/2006.png'
 #path_img= 'bin/sudo.jpg'
 
 matrixTool = SudokuMatrix.SudokuMatrix()

@@ -200,7 +200,7 @@ class NeuralNet: #nom de la class à changer
         print("----------------------------------------")
     
     def encode(self):
-        nn_file = open('neuralnet_saved_2.txt','w')
+        nn_file = open('neuralnet_saved_3.txt','w')
         #Premiere ligne: nb d'attributs
         #Deuxieme ligne: nb de classes
         nn_file.write(str(self.nb_attributs)+os.linesep)
@@ -214,7 +214,7 @@ class NeuralNet: #nom de la class à changer
         nn_file.close()
     
     def decode(self):
-        nn_file = open('neuralnet_saved_2.txt','r')
+        nn_file = open('neuralnet_saved_3.txt','r')
         list_lines = nn_file.readlines()
         self.nb_attributs = int(list_lines[0])
         self.nb_class = int(list_lines[2])
